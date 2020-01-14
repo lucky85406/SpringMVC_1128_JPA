@@ -8,9 +8,11 @@ import javax.persistence.EntityManager;
 public class Test1 {
     static EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
     public static void main(String[] args) throws Exception {
-        //add("老李");
+        //add("老許");
         //get(1L);
-        query();
+        //query();
+        update(51L, "老天");
+        //delete(1L);
     }
     
     public static void add(String name) {
@@ -35,4 +37,30 @@ public class Test1 {
         String json = mapper.writeValueAsString(list);
         System.out.println(json);
     }
+    
+    public static void update(Long id, String name) throws Exception {
+        Person person = em.find(Person.class, id);
+        if(person != null) {
+            person.setName(name);
+            em.getTransaction().begin();
+            em.persist(person);
+            em.getTransaction().commit();
+            System.out.println("Update OK !");
+        } else {
+            System.out.println("無此資料");
+        }
+    }
+    
+    public static void delete(Long id) throws Exception {
+        Person person = em.find(Person.class, id);
+        if(person != null) {
+            em.getTransaction().begin();
+            em.remove(person);
+            em.getTransaction().commit();
+            System.out.println("Delete OK !");
+        } else {
+            System.out.println("無此資料");
+        }
+    }
+    
 }
