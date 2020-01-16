@@ -4,6 +4,8 @@
     <persistence-unit name="p1" transaction-type="RESOURCE_LOCAL">
         <!-- reg entity -->
         <class>com.web.mvc.entity.one2one.Person</class>
+        <class>com.web.mvc.entity.one2one.Husband</class>
+        <class>com.web.mvc.entity.one2one.Wife</class>
         
         <properties>
             <!-- 
