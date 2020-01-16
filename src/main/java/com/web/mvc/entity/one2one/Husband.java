@@ -1,5 +1,6 @@
 package com.web.mvc.entity.one2one;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Husband {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dear_id")
+    @JsonIgnoreProperties(value = { "husband" })
     Wife wife;
 
     //可加入 SQL 外鍵約束 SQL

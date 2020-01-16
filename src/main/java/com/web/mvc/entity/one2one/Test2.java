@@ -11,12 +11,13 @@ public class Test2 {
 
     public static void main(String[] args) throws Exception {
 
-        //add("Jhon", "Mary");
-//        queryHusband();
-//        queryWife();
+//        add("Josh", "Jan");
+        queryHusband();
+        queryWife();
 //        get(Husband.class, 401L);
 //        get(Wife.class, 451L);
-        update(401L, "Vincent", "Anita");
+//        update(401L, "Vincent", "Anita");
+//        delete(701L);
     }
 
     public static void add(String name1, String name2) {
@@ -70,6 +71,15 @@ public class Test2 {
 
     }
 
+    public static void delete(Long id) {
+        Husband husband = em.find(Husband.class, id);
+        if(husband == null)return;
+        em.getTransaction().begin();
+        em.remove(husband);
+        em.getTransaction().commit();
+        System.out.println("Delete OK !");
+    }
+    
     public static void print(Object object) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(object);
