@@ -1,4 +1,3 @@
-
 package com.web.mvc.entity.one2one;
 
 import javax.persistence.CascadeType;
@@ -18,14 +17,23 @@ public class Husband {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @Column(name = "name", nullable = false,length = 50)
+
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
-    
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dear_id")
     Wife wife;
 
+    //可加入 SQL 外鍵約束 SQL
+    //ALTER TABLE APP.HUSBAND ADD CONSTRAINT FK_WIFE FOREIGN KEY (WIFE_ID) REFERENCES APP.WIFE(ID);        
+    //可移除 SQL 外鍵約束 SQL
+    //ALTER TABLE APP.HUSBAND DROP CONSTRAINT FK_WIFE;  
+    /*@JoinColumns( // 將 wife 資料加入 husband 中
+            {
+                @JoinColumn(name = "wife_id", referencedColumnName = "id"),
+                @JoinColumn(name = "wife_mame", referencedColumnName = "name")
+            }*/
     public Long getId() {
         return id;
     }
@@ -49,5 +57,5 @@ public class Husband {
     public void setWife(Wife wife) {
         this.wife = wife;
     }
-    
+
 }
