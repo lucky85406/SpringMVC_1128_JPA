@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Car")
 public class Car {
-
+//主控端
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

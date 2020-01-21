@@ -6,6 +6,8 @@
         <class>com.web.mvc.entity.one2one.Person</class>
         <class>com.web.mvc.entity.one2one.Husband</class>
         <class>com.web.mvc.entity.one2one.Wife</class>
+        <class>com.web.mvc.entity.one2Many.Car</class>
+        <class>com.web.mvc.entity.one2Many.Driver</class>
         
         <properties>
             <!-- 
