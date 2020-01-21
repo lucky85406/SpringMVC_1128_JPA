@@ -22,6 +22,7 @@ public class CarSystem {
         System.out.println("6. 單查 Car");
         System.out.println("7. 買車 Buy");
         System.out.println("8. 賣車 Sell");
+        System.out.println("9. 資產");
         System.out.println("0. 離開 Exit");
         System.out.println("-----------------");
 
@@ -34,7 +35,10 @@ public class CarSystem {
                 break;
             case "2":
                 System.out.println("請輸入車子: ");
-                addCar(sc.next());
+                String carname = sc.next();
+                System.out.println("請輸入價格: ");
+                int price = sc.nextInt();
+                addCar(carname, price);
                 break;
             case "3":
                 queryDriver();
@@ -72,6 +76,9 @@ public class CarSystem {
                 String buyerName = sc.next();
                 sellCar(sellerName, sellcarName, buyerName);
                 break;
+            case "9":
+                asset();
+                break;
             case "0":
                 return;
 
@@ -88,9 +95,15 @@ public class CarSystem {
         System.out.println("Driver 新增成功!");
     }
 
-    public static void addCar(String name) {
+    public static void addCar(String name, int cost) {
+
+        Price price = new Price();
+        price.setCost(cost);
+
         Car car = new Car();
         car.setName(name);
+        car.setPrice(price);
+
         em.getTransaction().begin();
         em.persist(car);
         em.getTransaction().commit();
@@ -176,6 +189,15 @@ public class CarSystem {
         em.persist(car);
         em.getTransaction().commit();
         System.out.println("賣車(過戶)成功 !");
+    }
+
+    public static void asset() {
+        em.clear();
+        List<Driver> drivers = em.createQuery("Select d From Driver d").getResultList();
+        drivers.stream().forEach(d -> {
+            int sum = d.getCars().stream().mapToInt(c -> c.getPrice().getCost()).sum();
+            System.out.printf("%s $%,d\n", d.getName(), sum);
+        });
     }
 
     public static void main(String[] args) throws Exception {
