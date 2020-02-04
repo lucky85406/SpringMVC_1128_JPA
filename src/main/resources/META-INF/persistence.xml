@@ -9,6 +9,8 @@
         <class>com.web.mvc.entity.one2Many.Car</class>
         <class>com.web.mvc.entity.one2Many.Driver</class>
         <class>com.web.mvc.entity.one2Many.Price</class>
+        <class>com.web.mvc.entity.many2many.Fund</class>
+        <class>com.web.mvc.entity.many2many.Stock</class>
         
         <properties>
             <!-- 
