@@ -11,9 +11,9 @@ public class Test2 {
 
     public static void main(String[] args) throws Exception {
 
-//        add("Josh", "Jan");
+//        add("Jam", "Amy");
         queryHusband();
-        queryWife();
+//        queryWife();
 //        get(Husband.class, 401L);
 //        get(Wife.class, 451L);
 //        update(401L, "Vincent", "Anita");

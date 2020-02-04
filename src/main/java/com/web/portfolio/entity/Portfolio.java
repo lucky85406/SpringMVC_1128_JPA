@@ -41,7 +41,49 @@ public class Portfolio implements Serializable {
             foreignKey = @ForeignKey(name = "tStock_fk",
                     value = ConstraintMode.CONSTRAINT))
     private Tstock tstock;
-    
+
+    public Portfolio() {
+    }
+
+    public Portfolio(Integer amount, Double cost, Investor investor, Tstock tstock) {
+        this.amount = amount;
+        this.cost = cost;
+        this.investor = investor;
+        this.tstock = tstock;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     
 
 }

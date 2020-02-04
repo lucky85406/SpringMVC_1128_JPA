@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Fund {
     @Column
     private String name;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(
             name = "Fund_Stock",
             joinColumns = @JoinColumn(name = "Fund_id"),
@@ -31,6 +32,7 @@ public class Fund {
     private Set<Stock> stocks;
     
     public Fund() {
+        
     }
 
     public Fund(String name) {

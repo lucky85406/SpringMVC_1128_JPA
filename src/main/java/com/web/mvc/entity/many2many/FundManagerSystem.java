@@ -1,14 +1,12 @@
 package com.web.mvc.entity.many2many;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.SimpleRestriction;
+import com.google.gson.Gson;
 import com.web.mvc.entity.JPAUtil;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 public class FundManagerSystem {
 
@@ -16,14 +14,14 @@ public class FundManagerSystem {
     static ObjectMapper obj = new ObjectMapper();
 
     public static void menu() throws Exception {
-        System.out.println("-----------------");
+        System.out.println("---------------------");
         System.out.println("1. 新增 股票 Stock");
         System.out.println("2. 新增 基金 Fund");
         System.out.println("3. 加入 基金成分股");
         System.out.println("4. 查詢 所有股票");
         System.out.println("5. 查詢 所有基金");
         System.out.println("0. Exit");
-        System.out.println("-----------------");
+        System.out.println("---------------------");
         Scanner sc = new Scanner(System.in);
         System.out.println("請輸入選項: ");
         switch (sc.next()) {
@@ -99,7 +97,6 @@ public class FundManagerSystem {
                 } catch (Exception e) {
                     System.out.println("無此股票代號~");
                 }
-
             }
         } catch (Exception e) {
             System.out.println("無此基金~");
@@ -108,12 +105,10 @@ public class FundManagerSystem {
 
     }
 
-
-
     private static void queryStocks() throws Exception {
         em.clear();
         List<Stock> stocks = em.createQuery("Select s From Stock s").getResultList();
-
+        
         for (Stock s : stocks) {
             s.getFunds().size();
         }
@@ -138,21 +133,21 @@ public class FundManagerSystem {
         System.out.format("| ID   | Name | Stocks               |%n");
         System.out.format("+------+------+----------------------+%n");
         for (Fund f : funds) {
-            String stocksString = f.getStocks().stream().map(s -> s.getSymbol()).collect(Collectors.joining(", "));
+            String stocksString = f.getStocks().stream().map(s -> s.getSymbol()).collect(Collectors.joining(", ")); 
             System.out.format(leftAlignFormat, f.getId(), f.getName(), stocksString);
         }
         System.out.format("+------+------+----------------------+%n");
         System.out.println("按任意鍵繼續...");
         new Scanner(System.in).nextLine();
     }
-
+    
     private static void prettyPrintingStock(List<Stock> stocks) {
         String leftAlignFormat = "| %-4d | %-8s | %-20s |%n";
         System.out.format("+------+----------+----------------------+%n");
         System.out.format("| ID   | Name     | Funds                |%n");
         System.out.format("+------+----------+----------------------+%n");
         for (Stock s : stocks) {
-            String fundsString = s.getFunds().stream().map(f -> f.getName()).collect(Collectors.joining(", "));
+            String fundsString = s.getFunds().stream().map(f -> f.getName()).collect(Collectors.joining(", ")); 
             System.out.format(leftAlignFormat, s.getId(), s.getSymbol(), fundsString);
         }
         System.out.format("+------+----------+----------------------+%n");
