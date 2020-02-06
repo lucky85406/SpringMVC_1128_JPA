@@ -12,24 +12,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Classify implements Serializable{
+public class Classify implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column
     private String name;
-    
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "classify")
+
+    @Column
+    private Boolean transaction;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "classify")
     @JsonIgnoreProperties("classify")
     private Set<Tstock> tStocks;
 
     public Classify() {
     }
 
-    public Classify(String name) {
+    public Classify(String name, Boolean transaction) {
         this.name = name;
+        this.transaction = transaction;
     }
 
     public Long getId() {
@@ -56,10 +60,16 @@ public class Classify implements Serializable{
         this.tStocks = tStocks;
     }
 
+    public Boolean getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Boolean transaction) {
+        this.transaction = transaction;
+    }
+
     @Override
     public String toString() {
-        return "Classify{" + "id=" + id + ", name=" + name +  + '}';
+        return "Classify{" + "id=" + id + ", name=" + name + ", transaction=" + transaction + '}';
     }
-    
-    
 }

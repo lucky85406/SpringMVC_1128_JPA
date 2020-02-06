@@ -36,7 +36,7 @@ public class Portfolio implements Serializable {
     @JsonIgnoreProperties("portfolios")
     private Investor investor;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Tstock_ID",
             foreignKey = @ForeignKey(name = "tStock_fk",
                     value = ConstraintMode.CONSTRAINT))
@@ -45,9 +45,9 @@ public class Portfolio implements Serializable {
     public Portfolio() {
     }
 
-    public Portfolio(Integer amount, Double cost, Investor investor, Tstock tstock) {
-        this.amount = amount;
+    public Portfolio(Double cost,Integer amount, Investor investor, Tstock tstock) {
         this.cost = cost;
+        this.amount = amount;        
         this.investor = investor;
         this.tstock = tstock;
     }
@@ -82,6 +82,22 @@ public class Portfolio implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Investor getInvestor() {
+        return investor;
+    }
+
+    public void setInvestor(Investor investor) {
+        this.investor = investor;
+    }
+
+    public Tstock getTstock() {
+        return tstock;
+    }
+
+    public void setTstock(Tstock tstock) {
+        this.tstock = tstock;
     }
 
     

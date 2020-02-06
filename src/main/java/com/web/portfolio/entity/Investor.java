@@ -18,31 +18,35 @@ public class Investor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column
     private String email;
-    
+
     @Column
     private String password;
-    
+
     @Column
     private String username;
-    
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "investor")
+
+    @Column
+    private Integer balance;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor")
     @JsonIgnoreProperties("investor")
     private Set<Portfolio> portfolios;
-    
-    @OneToMany(cascade = CascadeType.PERSIST,mappedBy = "investor")
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor")
     @JsonIgnoreProperties("investor")
     private Set<Watch> watchs;
 
     public Investor() {
     }
 
-    public Investor(String email, String password, String username) {
+    public Investor(String username, String password, String email, Integer balance) {
         this.email = email;
         this.password = password;
         this.username = username;
+        this.balance = balance;
     }
 
     public Long getId() {
@@ -93,10 +97,17 @@ public class Investor implements Serializable {
         this.watchs = watchs;
     }
 
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
-        return "Investor{" + "id=" + id + ", email=" + email + ", password=" + password + ", username=" + username + '}';
+        return "Investor{" + "id=" + id + ", email=" + email + ", password=" + password + ", username=" + username + ", balance=" + balance + '}';
     }
-    
-    
+
 }
