@@ -1,5 +1,4 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html>
     <head>
@@ -15,12 +14,13 @@
                         console.log(JSON.stringify(data));
                         $("#myform").find("#id").val(data.id);
                         $("#myform").find("#name").val(data.name);
-                        $("#myform").find("#transaction").find("option:contains("+data.transaction+")").attr("selected",true);
+                        $("#myform").find("#transaction").prop('checked', data.transaction);
                     });
                 });
                 $("#add").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
+                    console.log(jsonStr);
                     $.ajax({
                         url: "/SpringMVC/mvc/portfolio/classify/",
                         type: "POST",
@@ -37,12 +37,13 @@
                 $("#upt").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
+                    console.log(jsonStr);
                     $.ajax({
                         url: "/SpringMVC/mvc/portfolio/classify/" + jsonObj.id,
                         type: "PUT",
                         contentType: "application/json; charset=utf-8",
                         data: jsonStr,
-                        async: true,
+                        async: true, 
                         cache: false,
                         processData: false,
                         success: function (resposeJsonObject) {
@@ -63,7 +64,7 @@
                         }
                     });
                 });
-
+                
                 // 資料列表
                 table_list();
             });
@@ -77,7 +78,7 @@
                         $('#myTable').append(String.format(html,
                                 item.id,
                                 item.name,
-                                item.transaction,
+                                item.transaction
                                 ));
                     });
                 });
@@ -94,8 +95,8 @@
 
             <div id="main">
                 <div class="header">
-                    <h1>Investor</h1>
-                    <h2>投資人</h2>
+                    <h1>Classify</h1>
+                    <h2>商品分類</h2>
                 </div>
                 <table>
                     <td valign="top">
@@ -103,13 +104,9 @@
                             <form id="myform" class="pure-form">
                                 <fieldset>
                                     <legend> <h2 class="content-subhead">資料維護</h2></legend>
-
-                                    <input id="id" value="0"   name="id" placeholder="ID" readonly="true"/><p />
-                                    <input id="name" name="name" placeholder="name"/><p />
-                                    <select id="transaction" name="transaction">
-                                        <option value="true">true</option>
-                                        <option value="false">false</option>
-                                    </select><p />
+                                    <input id="id" vslue="0" name="id" placeholder="ID" readonly="true"/><p />
+                                    <input id="name" name="name" placeholder="分類名稱"/><p />
+                                    <input id="transaction" name="transaction" type="checkbox" /> Transaction<p />
                                     <button id="add" type="button" class="pure-button pure-button-primary">新增</button>
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
                                     <button id="del" type="button" class="pure-button pure-button-primary">刪除</button>
@@ -130,8 +127,9 @@
                                                 <th>transaction</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            <!-- 自動插入列表內容 -->
+
                                         </tbody>
                                     </table> 
                                 </fieldset>

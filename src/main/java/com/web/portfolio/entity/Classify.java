@@ -26,7 +26,7 @@ public class Classify implements Serializable {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "classify")
     @JsonIgnoreProperties("classify")
-    private Set<Tstock> tStocks;
+    private Set<TStock> tStocks;
 
     public Classify() {
     }
@@ -52,11 +52,11 @@ public class Classify implements Serializable {
         this.name = name;
     }
 
-    public Set<Tstock> gettStocks() {
+    public Set<TStock> gettStocks() {
         return tStocks;
     }
 
-    public void settStocks(Set<Tstock> tStocks) {
+    public void settStocks(Set<TStock> tStocks) {
         this.tStocks = tStocks;
     }
 

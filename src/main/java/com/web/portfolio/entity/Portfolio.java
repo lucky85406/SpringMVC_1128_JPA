@@ -40,12 +40,12 @@ public class Portfolio implements Serializable {
     @JoinColumn(name = "Tstock_ID",
             foreignKey = @ForeignKey(name = "tStock_fk",
                     value = ConstraintMode.CONSTRAINT))
-    private Tstock tstock;
+    private TStock tstock;
 
     public Portfolio() {
     }
 
-    public Portfolio(Double cost,Integer amount, Investor investor, Tstock tstock) {
+    public Portfolio(Double cost,Integer amount, Investor investor, TStock tstock) {
         this.cost = cost;
         this.amount = amount;        
         this.investor = investor;
@@ -92,11 +92,11 @@ public class Portfolio implements Serializable {
         this.investor = investor;
     }
 
-    public Tstock getTstock() {
+    public TStock getTstock() {
         return tstock;
     }
 
-    public void setTstock(Tstock tstock) {
+    public void setTstock(TStock tstock) {
         this.tstock = tstock;
     }
 

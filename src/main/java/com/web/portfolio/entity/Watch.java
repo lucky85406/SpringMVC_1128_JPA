@@ -1,4 +1,3 @@
-
 package com.web.portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,27 +22,27 @@ public class Watch implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    
     @Column
     private String name;
-
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    
+    @ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "investor_id", referencedColumnName = "id")
     @JsonIgnoreProperties("watchs")
     private Investor investor;
-
+    
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "watch_tstock",
+    @JoinTable(name = "watch_tstock", 
             joinColumns = {
-                @JoinColumn(name = "watch_id",
-                        nullable = false, updatable = false)
+                @JoinColumn(name = "watch_id", 
+                            nullable = false, updatable = false)
             },
             inverseJoinColumns = {
-                @JoinColumn(name = "tStock_id",
-                        nullable = false, updatable = false)
+                @JoinColumn(name = "tStock_id", 
+                            nullable = false, updatable = false)
             }
     )
-    private Set<Tstock> tstocks = new LinkedHashSet<>();
+    private Set<TStock> tStocks = new LinkedHashSet<>();
 
     public Watch() {
     }
@@ -52,7 +51,7 @@ public class Watch implements Serializable {
         this.name = name;
         this.investor = investor;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -61,12 +60,22 @@ public class Watch implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Set<TStock> gettStocks() {
+        return tStocks;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void settStocks(Set<TStock> tStocks) {
+        this.tStocks = tStocks;
+    }
+    
+    public Set<TStock> addtStock(TStock tStock) {
+        tStocks.add(tStock);
+        return tStocks;
+    }
+    
+    public Set<TStock> removetStock(TStock tStock) {
+        tStocks.remove(tStock);
+        return tStocks;
     }
 
     public Investor getInvestor() {
@@ -77,20 +86,18 @@ public class Watch implements Serializable {
         this.investor = investor;
     }
 
-    public Set<Tstock> getTstocks() {
-        return tstocks;
+    public String getName() {
+        return name;
     }
 
-    public void setTstocks(Set<Tstock> tstocks) {
-        this.tstocks = tstocks;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void settStocks(Set<Tstock> tStocks) {
-        this.tstocks = tStocks;
+    @Override
+    public String toString() {
+        return "Watch{" + "id=" + id + ", name=" + name + '}';
     }
-
-    public Set<Tstock> addtStock(Tstock tStock) {
-        tstocks.add(tStock);
-        return tstocks;
-    }
+    
+    
 }
