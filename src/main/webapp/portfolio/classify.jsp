@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html>
     <head>
@@ -10,20 +11,18 @@
                 $("#myTable").on("click", "tr", function () {
                     var id = $(this).find('td').eq(0).text().trim();
                     //console.log(id);
-                    $.get("/SpringMVC/mvc/portfolio/investor/" + id, function (data, status) {
+                    $.get("/SpringMVC/mvc/portfolio/classify/" + id, function (data, status) {
                         console.log(JSON.stringify(data));
                         $("#myform").find("#id").val(data.id);
-                        $("#myform").find("#username").val(data.username);
-                        $("#myform").find("#password").val(data.password);
-                        $("#myform").find("#email").val(data.email);
-                        $("#myform").find("#balance").val(data.balance);
+                        $("#myform").find("#name").val(data.name);
+                        $("#myform").find("#transaction").find("option:contains("+data.transaction+")").attr("selected",true);
                     });
                 });
                 $("#add").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
                     $.ajax({
-                        url: "/SpringMVC/mvc/portfolio/investor/",
+                        url: "/SpringMVC/mvc/portfolio/classify/",
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
                         data: jsonStr,
@@ -39,11 +38,11 @@
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
                     $.ajax({
-                        url: "/SpringMVC/mvc/portfolio/investor/" + jsonObj.id,
+                        url: "/SpringMVC/mvc/portfolio/classify/" + jsonObj.id,
                         type: "PUT",
                         contentType: "application/json; charset=utf-8",
                         data: jsonStr,
-                        async: true, 
+                        async: true,
                         cache: false,
                         processData: false,
                         success: function (resposeJsonObject) {
@@ -54,7 +53,7 @@
                 $("#del").on("click", function () {
                     var id = $("#myform").find("#id").val();
                     $.ajax({
-                        url: "/SpringMVC/mvc/portfolio/investor/" + id,
+                        url: "/SpringMVC/mvc/portfolio/classify/" + id,
                         type: "DELETE",
                         async: true,
                         cache: false,
@@ -64,23 +63,21 @@
                         }
                     });
                 });
-                
+
                 // 資料列表
                 table_list();
             });
 
             function table_list() {
-                $.get("/SpringMVC/mvc/portfolio/investor/", function (datas, status) {
+                $.get("/SpringMVC/mvc/portfolio/classify/", function (datas, status) {
                     console.log("Datas: " + datas);
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
-                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td></tr>';
+                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>';
                         $('#myTable').append(String.format(html,
                                 item.id,
-                                item.username,
-                                item.password,
-                                item.email,
-                                item.balance
+                                item.name,
+                                item.transaction,
                                 ));
                     });
                 });
@@ -107,11 +104,12 @@
                                 <fieldset>
                                     <legend> <h2 class="content-subhead">資料維護</h2></legend>
 
-                                    <input id="id" vslue="0"   name="id" placeholder="ID" readonly="true"/><p />
-                                    <input id="username" name="username" placeholder="username"/><p />
-                                    <input id="password" name="password" placeholder="password"/><p />
-                                    <input id="email" name="email" placeholder="email"/><p />
-                                    <input id="balance" name="balance" placeholder="balance" type="number"/><p />
+                                    <input id="id" value="0"   name="id" placeholder="ID" readonly="true"/><p />
+                                    <input id="name" name="name" placeholder="name"/><p />
+                                    <select id="transaction" name="transaction">
+                                        <option value="true">true</option>
+                                        <option value="false">false</option>
+                                    </select><p />
                                     <button id="add" type="button" class="pure-button pure-button-primary">新增</button>
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
                                     <button id="del" type="button" class="pure-button pure-button-primary">刪除</button>
@@ -128,10 +126,8 @@
                                         <thead>
                                             <tr>
                                                 <th>id</th>
-                                                <th>username</th>
-                                                <th>password</th>
-                                                <th>email</th>
-                                                <th>balance</th>
+                                                <th>name</th>
+                                                <th>transaction</th>
                                             </tr>
                                         </thead>
                                         <tbody>
