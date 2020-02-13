@@ -28,6 +28,7 @@ public class TStockController {
     @PostMapping(value = {"/", "/add"})
     @Transactional
     public Tstock add(@RequestBody Map<String, String> map) {
+        String a = "";
         Classify classify = em.find(Classify.class, map.get("classify_id"));
         Tstock ts = new Tstock();
         ts.setName(map.get("name"));
