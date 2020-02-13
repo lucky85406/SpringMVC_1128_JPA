@@ -88,12 +88,18 @@
                     console.log("Datas: " + datas);
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
-                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td></tr>';
+                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td></tr>';
                         $('#myTable').append(String.format(html,
                                 item.id,
                                 item.name,
                                 item.symbol,
-                                item.classify.name
+                                item.classify.name,
+                                item.preClosed,
+                                item.price,
+                                item.change,
+                                item.changeInPercent,
+                                numberFormat(item.volumn),
+                                getYMDHMS(item.transactionDate)
                                 ));
                     });
                 });
@@ -143,6 +149,13 @@
                                                 <th>name</th>
                                                 <th>symbol</th>
                                                 <th>classify name</th>
+                                                <th>preClosed</th>
+                                                <th>price</th>
+                                                <th>change</th>
+                                                <th>changeInPercent</th>
+                                                <th>volumn</th>
+                                                <th>transactionDate</th>
+                                                
                                             </tr>
                                         </thead>
 
