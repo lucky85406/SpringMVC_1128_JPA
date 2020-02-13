@@ -1,22 +1,30 @@
+
 package com.web.portfolio.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 
 
 @Entity
-public class Tstock implements Serializable {
+public class Tstock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,9 +54,9 @@ public class Tstock implements Serializable {
 
     @Column
     private Date transactionDate;
-    
+
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "classify_id",referencedColumnName = "id")
+    @JoinColumn(name = "classify_id", referencedColumnName = "id")
     @JsonIgnoreProperties("tStocks")
     private Classify classify;
 
@@ -61,6 +69,7 @@ public class Tstock implements Serializable {
         this.classify = classify;
     }
 
+       
     public Long getId() {
         return id;
     }
@@ -75,6 +84,14 @@ public class Tstock implements Serializable {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public Classify getClassify() {
+        return classify;
+    }
+
+    public void setClassify(Classify classify) {
+        this.classify = classify;
     }
 
     public String getName() {
@@ -131,17 +148,4 @@ public class Tstock implements Serializable {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
-    }
-
-    public Classify getClassify() {
-        return classify;
-    }
-
-    public void setClassify(Classify classify) {
-        this.classify = classify;
-    }
-
-
-    
-    
-}
+    }}
