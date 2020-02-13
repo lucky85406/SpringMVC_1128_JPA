@@ -42,7 +42,7 @@ public class Watch implements Serializable {
                             nullable = false, updatable = false)
             }
     )
-    private Set<TStock> tStocks = new LinkedHashSet<>();
+    private Set<Tstock> tStocks = new LinkedHashSet<>();
 
     public Watch() {
     }
@@ -60,20 +60,20 @@ public class Watch implements Serializable {
         this.id = id;
     }
 
-    public Set<TStock> gettStocks() {
+    public Set<Tstock> gettStocks() {
         return tStocks;
     }
 
-    public void settStocks(Set<TStock> tStocks) {
+    public void settStocks(Set<Tstock> tStocks) {
         this.tStocks = tStocks;
     }
     
-    public Set<TStock> addtStock(TStock tStock) {
+    public Set<Tstock> addtStock(Tstock tStock) {
         tStocks.add(tStock);
         return tStocks;
     }
     
-    public Set<TStock> removetStock(TStock tStock) {
+    public Set<Tstock> removetStock(Tstock tStock) {
         tStocks.remove(tStock);
         return tStocks;
     }

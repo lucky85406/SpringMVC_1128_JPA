@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 @Controller
 @RequestMapping("/portfolio")
 public class LoginController {
@@ -32,7 +30,7 @@ public class LoginController {
             
             if (investor != null && investor.getPassword().equals(password)) {
                 session.setAttribute("investor", investor);
-                session.setAttribute("watch_id",investor.getWatchs().iterator().next().getId());
+                session.setAttribute("watch_id", investor.getWatchs().iterator().next().getId());
                 if(referer.contains("login.jsp")) {
                     return "redirect:/portfolio/index.jsp";
                 }

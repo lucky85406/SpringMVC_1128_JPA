@@ -8,7 +8,7 @@
         <script>
             var watch_id = ${sessionScope.watch_id};
             var watch = null;
-
+            
             $(document).ready(function () {
                 $("#upt").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
@@ -28,21 +28,21 @@
                 });
 
                 $("#myTable1").on("click", "tr td:nth-child(5)", function () {
-                        var tstock_id = $(this).attr('tstock_id');
-                        if (confirm("是否要刪除(ID: " + tstock_id + ")？")) {
-                                $.ajax({
-                                    url: "/SpringMVC/mvc/portfolio/watch/" + watch_id + "/remove/" + tstock_id,
-                                    type: "DELETE",
-                                    async: true,
-                                    cache: false,
-                                    processData: false,
-                                    success: function (resposeJsonObject) {
-                                        table_list1();
-                                    }
-                                });
+                    var tstock_id = $(this).attr('tstock_id');
+                    if (confirm("是否要刪除？" + tstock_id)) {
+                        $.ajax({
+                            url: "/SpringMVC/mvc/portfolio/watch/" + watch_id + "/remove/" + tstock_id,
+                            type: "DELETE",
+                            async: true,
+                            cache: false,
+                            processData: false,
+                            success: function (resposeJsonObject) {
+                                table_list1();
+                            }
+                        });
                     }
                 });
-
+                
                 $("#myTable2").on("click", "tr td:nth-child(5)", function () {
                     // 判斷該 tstock_id 是否已經加入 Watch ?
                     var tstock_id = $(this).attr('tstock_id');
@@ -75,7 +75,7 @@
                 // 資料列表(TStock List)
                 table_list2();
             });
-
+            
             // 1. 透過 watch_id 找到 watch
             // 2. 再透過 watch.tStocks 取得觀察股(tstock)資料
             function table_list1() {
@@ -84,7 +84,7 @@
                     $("#myform").find("#id").val(data.id);
                     $("#myform").find("#name").val(data.name);
                     watch = data; // 設定 watch 變數資料
-
+                    
                     $("#myTable1 tbody > tr").remove();
                     $.each(watch.tStocks, function (i, item) {
                         var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td tstock_id="{4}">{5}</td></tr>';
@@ -100,7 +100,7 @@
                     });
                 });
             }
-
+            
             // 取得所有 tstock 列表資料
             function table_list2() {
                 $.get("/SpringMVC/mvc/portfolio/tstock/", function (datas, status) {

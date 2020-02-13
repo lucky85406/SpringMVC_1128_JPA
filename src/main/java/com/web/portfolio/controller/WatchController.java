@@ -1,6 +1,6 @@
 package com.web.portfolio.controller;
 
-import com.web.portfolio.entity.TStock;
+import com.web.portfolio.entity.Tstock;
 import com.web.portfolio.entity.Watch;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +55,7 @@ public class WatchController {
     @Transactional
     public Watch add_tstock(@PathVariable("id") Long id, @PathVariable("tstock_id") Long tstock_id) {
         Watch watch = em.find(Watch.class, id);
-        TStock ts = em.find(TStock.class, tstock_id);
+        Tstock ts = em.find(Tstock.class, tstock_id);
         watch.addtStock(ts);
         em.persist(watch);
         return get(id);
@@ -65,7 +65,7 @@ public class WatchController {
     @Transactional
     public Watch remove_tstock(@PathVariable("id") Long id, @PathVariable("tstock_id") Long tstock_id) {
         Watch watch = em.find(Watch.class, id);
-        TStock ts = em.find(TStock.class, tstock_id);
+        Tstock ts = em.find(Tstock.class, tstock_id);
         watch.removetStock(ts);
         em.persist(watch);
         return get(id);

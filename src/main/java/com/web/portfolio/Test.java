@@ -5,7 +5,7 @@ import com.web.mvc.entity.JPAUtil;
 import com.web.portfolio.entity.Classify;
 import com.web.portfolio.entity.Investor;
 import com.web.portfolio.entity.Portfolio;
-import com.web.portfolio.entity.TStock;
+import com.web.portfolio.entity.Tstock;
 import com.web.portfolio.entity.Watch;
 import javax.persistence.EntityManager;
 
@@ -27,17 +27,17 @@ public class Test {
         Classify classify2 = new Classify("匯率", true);
         Classify classify3 = new Classify("指數", false);
         
-        TStock ts1 = new TStock("2330.TW", "台積電", classify1);
-        TStock ts2 = new TStock("2317.TW", "鴻海", classify1);
-        TStock ts3 = new TStock("1101.TW", "台泥", classify1);
+        Tstock ts1 = new Tstock("2330.TW", "台積電", classify1);
+        Tstock ts2 = new Tstock("2317.TW", "鴻海", classify1);
+        Tstock ts3 = new Tstock("1101.TW", "台泥", classify1);
         
-        TStock ts4 = new TStock("USDTWD=x", "美金台幣", classify2);
-        TStock ts5 = new TStock("JPYTWD=x", "日幣台幣", classify2);
-        TStock ts6 = new TStock("CNYTWD=x", "人民幣台幣", classify2);
+        Tstock ts4 = new Tstock("USDTWD=x", "美金台幣", classify2);
+        Tstock ts5 = new Tstock("JPYTWD=x", "日幣台幣", classify2);
+        Tstock ts6 = new Tstock("CNYTWD=x", "人民幣台幣", classify2);
         
-        TStock ts7 = new TStock("^TWII", "台灣加權", classify3);
-        TStock ts8 = new TStock("^IXIC", "納斯達克", classify3);
-        TStock ts9 = new TStock("^DJI", "道瓊工業", classify3);
+        Tstock ts7 = new Tstock("^TWII", "台灣加權", classify3);
+        Tstock ts8 = new Tstock("^IXIC", "納斯達克", classify3);
+        Tstock ts9 = new Tstock("^DJI", "道瓊工業", classify3);
         
         Portfolio portfolio1 = new Portfolio(60.5, 2000, investor1, ts1);
         Portfolio portfolio2 = new Portfolio(35.5, 5000, investor1, ts2);

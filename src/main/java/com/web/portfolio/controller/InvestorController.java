@@ -32,11 +32,13 @@ public class InvestorController {
     }
     
     @GetMapping(value = {"/{id}", "/get/{id}"})
-    @Transactional
     public Investor get(@PathVariable("id") Long id) {
         Investor investor = em.find(Investor.class, id);
         if(investor != null && investor.getPortfolios() != null && investor.getPortfolios().size() > 0) {
             investor.getPortfolios().size();
+        }
+        if(investor != null && investor.getWatchs()!= null && investor.getWatchs().size() > 0) {
+            investor.getWatchs().size();
         }
         return investor;
     }
@@ -49,11 +51,13 @@ public class InvestorController {
         investor.setPassword(map.get("password"));
         investor.setEmail(map.get("email"));
         investor.setBalance(Integer.parseInt(map.get("balance")));
+        Watch watch = new Watch("我的投資組合", investor);
         em.persist(investor);
+        em.persist(watch);
         // 取得最新 id
         em.flush();
         Long id = investor.getId();
-        return get(id);
+        return investor;
     }
     
     @PutMapping(value = {"/{id}", "/update/{id}"})

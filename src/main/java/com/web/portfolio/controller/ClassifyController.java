@@ -1,8 +1,6 @@
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Classify;
-import com.web.portfolio.entity.Investor;
-import com.web.portfolio.entity.Watch;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
@@ -11,6 +9,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,8 +34,10 @@ public class ClassifyController {
     @GetMapping(value = {"/{id}", "/get/{id}"})
     @Transactional
     public Classify get(@PathVariable("id") Long id) {
+        //FinCategory finCategory = (FinCategory)em.createQuery("SELECT f FROM FinCategory f JOIN FETCH f.finProducts WHERE f.fca_id = " + id).getSingleResult();
         Classify classify = em.find(Classify.class, id);
-        if(classify != null && classify.gettStocks() != null && classify.gettStocks().size() > 0) {
+        //!!!!!因為是延遲加載，通過執行size()這種方式所有子項
+        if ( classify != null && classify.gettStocks() != null) {
             classify.gettStocks().size();
         }
         return classify;
@@ -47,7 +48,11 @@ public class ClassifyController {
     public Classify add(@RequestBody Map<String, String> map) {
         Classify classify = new Classify();
         classify.setName(map.get("name"));
-        classify.setTransaction(Boolean.parseBoolean(map.get("transaction")));
+        System.out.println("map: " + map);
+        if(map.get("transaction") == null)
+            classify.setTransaction(false);
+        else
+            classify.setTransaction(true);
         em.persist(classify);
         // 取得最新 id
         em.flush();
@@ -58,14 +63,16 @@ public class ClassifyController {
     @PutMapping(value = {"/{id}", "/update/{id}"})
     @Transactional
     public Boolean update(@PathVariable("id") Long id, @RequestBody Map<String, String> map) {
-        Classify o_classify = get(id);
-        if (o_classify == null) {
+        Classify o_Classify = get(id);
+        if (o_Classify == null) {
             return false;
         }
-        o_classify.setName(map.get("name"));
-        o_classify.setTransaction(Boolean.parseBoolean(map.get("transaction")));
-
-        em.persist(o_classify);
+        o_Classify.setName(map.get("name"));
+        if(map.get("transaction") == null)
+            o_Classify.setTransaction(false);
+        else
+            o_Classify.setTransaction(true);
+        em.persist(o_Classify);
         em.flush();
         return true;
     }
@@ -77,4 +84,5 @@ public class ClassifyController {
         em.flush();
         return get(id) == null ? true : false;
     }
+    
 }

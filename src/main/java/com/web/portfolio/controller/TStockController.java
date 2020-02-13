@@ -1,7 +1,7 @@
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Classify;
-import com.web.portfolio.entity.TStock;
+import com.web.portfolio.entity.Tstock;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
@@ -27,9 +27,9 @@ public class TStockController {
 
     @PostMapping(value = {"/", "/add"})
     @Transactional
-    public TStock add(@RequestBody Map<String, String> map) {
+    public Tstock add(@RequestBody Map<String, String> map) {
         Classify classify = em.find(Classify.class, map.get("classify_id"));
-        TStock ts = new TStock();
+        Tstock ts = new Tstock();
         ts.setName(map.get("name"));
         ts.setSymbol(map.get("symbol"));
         ts.setClassify(classify);
@@ -40,9 +40,9 @@ public class TStockController {
     
     @PutMapping(value = {"/", "/update"})
     @Transactional
-    public TStock update(@RequestBody Map<String, String> map) {
+    public Tstock update(@RequestBody Map<String, String> map) {
         Classify classify = em.find(Classify.class, map.get("classify_id"));
-        TStock ts = em.find(TStock.class, map.get("id"));;
+        Tstock ts = em.find(Tstock.class, map.get("id"));;
         ts.setName(map.get("name"));
         ts.setSymbol(map.get("symbol"));
         ts.setClassify(classify);
@@ -54,22 +54,22 @@ public class TStockController {
     @DeleteMapping(value = {"/{id}", "/delete/{id}"})
     @Transactional
     public Boolean delete(@PathVariable("id") Long id) {
-        TStock tStock = em.find(TStock.class, id);
+        Tstock tStock = em.find(Tstock.class, id);
         em.remove(tStock);
         return true;
     }
     
     @GetMapping(value = {"/{id}", "/get/{id}"})
     @Transactional
-    public TStock get(@PathVariable("id") Long id) {
-        TStock tStock = em.find(TStock.class, id);
+    public Tstock get(@PathVariable("id") Long id) {
+        Tstock tStock = em.find(Tstock.class, id);
         return tStock;
     }
 
     @GetMapping(value = {"/", "/query"})
-    public List<TStock> query() {
-        Query query = em.createQuery("select t from TStock t");
-        List<TStock> list = query.getResultList();
+    public List<Tstock> query() {
+        Query query = em.createQuery("select t from Tstock t");
+        List<Tstock> list = query.getResultList();
         return list;
     }
 
