@@ -95,18 +95,18 @@
                     console.log("Datas: " + datas);
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
-                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td></tr>';
+                        var html = '<tr title="昨收: {0} \n報價: {1} \n漲跌: {2} \n漲跌幅: {9}% \n交易量: {3} "><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td></tr>';
                         $('#myTable').append(String.format(html,
+                                item.preClosed,
+                                item.price,
+                                item.change,
+                                numberFormat(item.volumn),
                                 item.id,
                                 item.name,
                                 item.symbol,
                                 item.classify.name,
-                                item.preClosed,
-                                item.price,
-                                item.change,
-                                item.changeInPercent,
-                                numberFormat(item.volumn),
-                                getYMDHMS(item.transactionDate)
+                                getYMDHMS(item.transactionDate),
+                                item.changeInPercent
                                 ));
                     });
                 });
@@ -143,7 +143,7 @@
                                 </fieldset>
                             </form>
                         </div>
-                    </td>    
+                    </td> 
                     <td valign="top">    
                         <div class="content">
                             <form class="pure-form">
@@ -156,13 +156,7 @@
                                                 <th>name</th>
                                                 <th>symbol</th>
                                                 <th>classify name</th>
-                                                <th>preClosed</th>
-                                                <th>price</th>
-                                                <th>change</th>
-                                                <th>changeInPercent</th>
-                                                <th>volumn</th>
                                                 <th>transactionDate</th>
-
                                             </tr>
                                         </thead>
 
@@ -173,10 +167,8 @@
                                 </fieldset>
                             </form>
                         </div>    
-                    </td>
+                    </td>                   
                 </table>
-
-
             </div>
         </div>
         <!-- Foot -->

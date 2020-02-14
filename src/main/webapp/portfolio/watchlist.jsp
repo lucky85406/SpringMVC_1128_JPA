@@ -55,7 +55,7 @@
                         var html = '<tr>' +
                                 '<td align="center">{0}</td><td>{1}</td><td>{2}</td>' +
                                 '<td align="right">{3}</td><td align="right">{4}</td><td align="right">{5}</td>' +
-                                '<td align="right">{6}</td><td align="right">{7}</td><td>{8}</td>' +
+                                '<td align="right">{6}</td><td align="right">{7}</td><td align="right">{8}</td>' +
                                 '<td tstock_id="{9}">{10}</td>' +
                                 '</tr>';
                         var tstock_id = "";
