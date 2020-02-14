@@ -8,6 +8,7 @@
         <script>
             var watch_id = ${sessionScope.watch_id};
             var watch = null;
+            var watchname = "";
             
             $(document).ready(function () {
                 $("#upt").on("click", function () {
@@ -83,6 +84,7 @@
                     console.log(JSON.stringify(data));
                     $("#myform").find("#id").val(data.id);
                     $("#myform").find("#name").val(data.name);
+                    $("#mywatch").text(data.name+" -----> ");
                     watch = data; // 設定 watch 變數資料
                     
                     $("#myTable1 tbody > tr").remove();
@@ -134,7 +136,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Watch</h1>
-                    <h2>我的觀察股, watch_id: ${sessionScope.watch_id}</h2>
+                    <h2><span id="mywatch"> 觀察</span>watch_id: ${sessionScope.watch_id}</h2>
                 </div>
                 <table>
                     <td valign="top">

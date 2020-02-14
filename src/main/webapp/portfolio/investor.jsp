@@ -69,7 +69,6 @@
                 // 資料列表
                 table_list();
             });
-
             function table_list() {
                 $.get("/SpringMVC/mvc/portfolio/investor/", function (datas, status) {
                     console.log("Datas: " + datas);
