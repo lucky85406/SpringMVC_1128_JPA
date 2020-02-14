@@ -11,30 +11,35 @@
             $(document).ready(function () {
                 watchList();
                 // 走勢圖
-                $("#myTable").on("click", "tr td:nth-child(3)", function () {
-                    var symbol = $(this).text();
-                    //alert(symbol);
+                var symbol = "";
+                var name = "";
+                $("#myTable").on("click", "tr", function () {
+                    symbol = $(this).find("td").eq(2).text().trim();
+                    name = "產品名稱: "+$(this).find("td").eq(1).text().trim();                    
+                    alert(name);
                     queryHistQuotes(symbol);
                 });
                 // 下單
                 $("#myTable").on("click", "tr td:nth-child(10)", function () {
                     var tstock_id = $(this).attr('tstock_id');
-                    if (tstock_id == '') return;
+                    if (tstock_id == '')
+                        return;
                     if (confirm("是否要買進？")) {
                         amount = prompt("請輸入購買股數(請以1000股為單位)？", "1000");
-                        if(amount == null) return;
-                        if(parseInt(amount) % 1000 != 0) {
+                        if (amount == null)
+                            return;
+                        if (parseInt(amount) % 1000 != 0) {
                             alert('請輸入1000的倍數(1張=1000股)');
                             return;
                         }
                         $.ajax({
                             url: "/SpringMVC/mvc/portfolio/order/buy/" + tstock_id + "/" + amount,
                             type: "GET",
-                            async: true, 
-                            cache: false,  
+                            async: true,
+                            cache: false,
                             processData: false, //To avoid making query String instead of JSON
                             success: function (resposeJsonObject) {
-                               alert('成交回報: ' + resposeJsonObject);
+                                alert('成交回報: ' + resposeJsonObject);
                             }
                         });
                     }
@@ -80,10 +85,10 @@
         <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
         <script>
             google.charts.load('current', {packages: ['corechart']});
-            google.charts.setOnLoadCallback(function() {
+            google.charts.setOnLoadCallback(function () {
                 queryHistQuotes('^TWII');
             });
-            
+
             function queryHistQuotes(symbol) {
                 $.get("/SpringMVC/mvc/portfolio/price/histquotes/" + symbol, function (quotes, status) {
                     console.log("quotes: " + quotes);
