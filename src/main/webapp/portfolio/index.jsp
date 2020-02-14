@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>我的投資組合</title>
+            <title>我的投資組合</title>
         <!-- head -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
     </head>

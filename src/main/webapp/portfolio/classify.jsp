@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
     <head>
+        <title>商品分類區</title>
         <!-- head -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
 

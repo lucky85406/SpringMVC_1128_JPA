@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
     <head>
+        <title>TStock資訊</title>
         <!-- head -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
 

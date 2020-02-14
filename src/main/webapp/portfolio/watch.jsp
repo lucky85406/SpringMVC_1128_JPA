@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
     <head>
+        <title>Watch資訊操作</title>
         <!-- head -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
 

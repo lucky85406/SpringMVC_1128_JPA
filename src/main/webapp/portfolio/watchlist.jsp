@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
     <head>
+        <title>投資觀察股資訊</title>
         <!-- head -->
         <!-- Watch List -->
         <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
@@ -48,6 +49,7 @@
 
             function watchList() {
                 $.get("/SpringMVC/mvc/portfolio/watch/" + watch_id, function (data, status) {
+                    $("#Watchname").text(data.name);
                     console.log(JSON.stringify(data));
                     // 請撰寫
                     $("#myTable tbody > tr").remove();
@@ -149,7 +151,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Watch List</h1>
-                    <h2 id="head2">Watch List</h2>
+                    <h2 id="Watchname">Watch List</h2>
                 </div>
 
                 <table id="myTable" class="pure-table pure-table-bordered" width="100%">

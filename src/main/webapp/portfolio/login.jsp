@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
-        <title>Login Page</title>
+        <title>登入</title>
         <style>
             td {
                 padding-bottom: 50px;
