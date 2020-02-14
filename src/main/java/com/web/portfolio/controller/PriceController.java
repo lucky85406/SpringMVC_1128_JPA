@@ -1,3 +1,4 @@
+
 package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Tstock;
@@ -20,10 +21,10 @@ import yahoofinance.histquotes.Interval;
 @RestController
 @RequestMapping("/portfolio/price")
 public class PriceController {
-    
+
     @PersistenceContext
     protected EntityManager em;
-    
+
     @GetMapping(value = {"/refresh"})
     @Transactional
     public List<Tstock> refresh() {
@@ -42,13 +43,14 @@ public class PriceController {
                 // 更新報價
                 em.persist(tStock);
                 em.flush();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 //e.printStackTrace();
             }
         }
         return list;
     }
-    
+
     @GetMapping(value = {"/histquotes/{symbol}"}) // 歷史股價
     public List<HistoricalQuote> queryHistQuotes(@PathVariable("symbol") String symbol) {
         List<HistoricalQuote> histQuotes = null;
@@ -59,7 +61,8 @@ public class PriceController {
 
             Stock google = YahooFinance.get(symbol);
             histQuotes = google.getHistory(from, to, Interval.DAILY);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
         return histQuotes;

@@ -2,5 +2,6 @@
     完成修改，網頁正常執行，加入Readme.txt
 #2020/02/14 1433
     watchlist.jsp 修改symbol,name 增加alert()顯示產品名稱
-#2020/02/14 1519
     menu.jspf 修改side-menu.css 欄位風格設計
+    tstock.jsp 新增 auto_refresh 讓進入Tstock時自動更新價格
+

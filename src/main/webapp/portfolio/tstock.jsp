@@ -7,6 +7,7 @@
 
         <script>
             $(document).ready(function () {
+                auto_refresh();
                 $("#myTable").on("click", "tr", function () {
                     var id = $(this).find('td').eq(0).text().trim();
                     //console.log(id);
@@ -66,13 +67,19 @@
                         }
                     });
                 });
-                
                 // Classify 下拉選單
                 classify_list();
-                
+
                 // 資料列表
                 table_list();
             });
+
+            function auto_refresh() {
+                $.get("/SpringMVC/mvc/portfolio/price/refresh/", function (datas, status) {
+                    console.log("Datas: " + datas);
+                });
+
+            }
 
             function classify_list() {
                 $.get("/SpringMVC/mvc/portfolio/classify/", function (datas, status) {
@@ -155,7 +162,7 @@
                                                 <th>changeInPercent</th>
                                                 <th>volumn</th>
                                                 <th>transactionDate</th>
-                                                
+
                                             </tr>
                                         </thead>
 
