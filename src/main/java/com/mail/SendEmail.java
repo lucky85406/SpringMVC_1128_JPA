@@ -37,8 +37,8 @@ public class SendEmail {
     
     public void submit(String personal, String to, String title, String html) throws Exception {
         // Gmail 與 授權碼(非 Google 密碼)
-        final String googleGmail = "xxx@gmail.com"; // 你的 Gmail
-        final String authPassword = "xxx"; // 授權碼
+        final String googleGmail = "lucky85406@gmail.com"; // 你的 Gmail
+        final String authPassword = "njcltotjtvqrvoml"; // 授權碼
 
         // smpt 設定資訊
         Properties prop = new Properties();

@@ -15,4 +15,8 @@
         code 用來給使用者驗證碼
         pass 用來判定新舊使用者
     Investor.jsp 新增 code pass 欄位
+-2055:
+    EmailService.java 新增 Email伺服器 用來寄送Email驗證信
+    springmvc-servlet 修改 <context:component-scan base-package="com.web.portfolio.*"/>
+    InvestorController.java 新增verify 當新增(add)使用者時寄送驗證信
 
