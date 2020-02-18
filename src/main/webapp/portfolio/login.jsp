@@ -28,6 +28,7 @@
                         <input type="password" name="password" placeholder="Password"><p />
 
                         <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+                        <button type="button" class="pure-button pure-button-primary" onclick="alert('Homework')">Register</button>
                     </fieldset>
                 </form>
             </td>
