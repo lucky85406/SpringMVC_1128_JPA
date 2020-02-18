@@ -19,4 +19,8 @@
     EmailService.java 新增 Email伺服器 用來寄送Email驗證信
     springmvc-servlet 修改 <context:component-scan base-package="com.web.portfolio.*"/>
     InvestorController.java 新增verify 當新增(add)使用者時寄送驗證信
+-2135:
+    versify.jsp 新增
+    LoginFilter.java 修改 利用過濾器來導進versify.jsp
+    LoginController.java 新增 versify類別 回傳驗證資訊
 
