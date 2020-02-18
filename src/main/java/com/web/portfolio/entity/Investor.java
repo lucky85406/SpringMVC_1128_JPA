@@ -32,11 +32,17 @@ public class Investor implements Serializable {
     @Column
     private Integer balance;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor",fetch = FetchType.EAGER)
+    @Column
+    private String code;
+
+    @Column
+    private Boolean pass;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor", fetch = FetchType.EAGER)
     @JsonIgnoreProperties("investor")
     private Set<Portfolio> portfolios;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "investor", fetch = FetchType.EAGER)
     @JsonIgnoreProperties("investor")
     private Set<Watch> watchs;
 
@@ -106,9 +112,27 @@ public class Investor implements Serializable {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return "Investor{" + "id=" + id + ", email=" + email + ", password=" + password + ", username=" + username + ", balance=" + balance + '}';
+    public String getCode() {
+        return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Boolean getPass() {
+        return pass;
+    }
+
+    public void setPass(Boolean pass) {
+        this.pass = pass;
+    }
+
+    @Override
+    public String toString() {
+        return "Investor{" + "id=" + id + ", email=" + email + ", password=" + password + ", username=" + username + ", balance=" + balance + ", code=" + code + ", pass=" + pass + '}';
+    }
+    
+    
+    
 }

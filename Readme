@@ -8,4 +8,11 @@
     watch.jsp 新增標題出現觀察名稱
     login bug 修改程式碼 investor.jsp , login.jsp , InvestorController.java , LoginController.java
     *.jsp 新增 title資訊
+#2020/02/18
+-2015:
+    com.mail.sendEmail 新增 Email驗證功能
+    Investor.java,InvestorController.java,LoginController.java 修改 新增 code,pass欄位
+        code 用來給使用者驗證碼
+        pass 用來判定新舊使用者
+    Investor.jsp 新增 code pass 欄位
 

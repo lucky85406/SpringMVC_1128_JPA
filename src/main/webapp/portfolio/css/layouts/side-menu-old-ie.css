@@ -143,7 +143,7 @@ appears on the left side of the page.
 
 #menu .pure-menu-selected,
 #menu .pure-menu-heading {
-    background: #ed70f5;
+    background: #0e7b79;
 }
 
 /*
@@ -160,6 +160,7 @@ appears on the left side of the page.
 
 #menu .pure-menu-heading {
     font-size: 110%;
+    text-transform: capitalize;
     color: #fff;
     margin: 0;
 }

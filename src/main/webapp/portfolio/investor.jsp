@@ -45,7 +45,7 @@
                         type: "PUT",
                         contentType: "application/json; charset=utf-8",
                         data: jsonStr,
-                        async: true, 
+                        async: true,
                         cache: false,
                         processData: false,
                         success: function (resposeJsonObject) {
@@ -66,7 +66,7 @@
                         }
                     });
                 });
-                
+
                 // 資料列表
                 table_list();
             });
@@ -75,13 +75,15 @@
                     console.log("Datas: " + datas);
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
-                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td></tr>';
+                        var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td></tr>';
                         $('#myTable').append(String.format(html,
                                 item.id,
                                 item.username,
                                 item.password,
                                 item.email,
-                                item.balance
+                                item.balance,
+                                item.code,
+                                item.pass
                                 ));
                     });
                 });
@@ -107,17 +109,17 @@
                             <form id="myform" class="pure-form">
                                 <fieldset>
                                     <legend> <h2 class="content-subhead">資料維護</h2></legend>
-                                    
+
                                     <input id="id" vslue="0"   name="id" placeholder="ID" readonly="true"/><p />
                                     <input id="username" name="username" placeholder="username"/><p />
                                     <input id="password" name="password" placeholder="password"/><p />
                                     <input id="email" name="email" placeholder="email"/><p />
                                     <input id="balance" name="balance" placeholder="balance" type="number"/><p />
-                                    
+
                                     <button id="add" type="button" class="pure-button pure-button-primary">新增</button>
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
                                     <button id="del" type="button" class="pure-button pure-button-primary">刪除</button>
-                                    
+
                                 </fieldset>
                             </form>
                         </div>
@@ -135,6 +137,8 @@
                                                 <th>password</th>
                                                 <th>email</th>
                                                 <th>balance</th>
+                                                <th>code</th>
+                                                <th>pass</th>
                                             </tr>
                                         </thead>
                                         <tbody>
