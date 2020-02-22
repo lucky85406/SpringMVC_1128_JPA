@@ -1,3 +1,6 @@
+# SpringMVC_1128_JPA  
+<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
+
 ### 2020/02/14
 ```
 0100:  
@@ -8,7 +11,7 @@
  tstock.jsp 新增 auto_refresh 讓進入Tstock時自動更新價格  
  watch.jsp 新增標題出現觀察名稱  
  login bug 修改程式碼 investor.jsp , login.jsp , InvestorController.java , LoginController.java  
-  *.jsp 新增 title資訊  
+ *.jsp 新增 title資訊  
 ```
 ## 2020/02/18
 ```
