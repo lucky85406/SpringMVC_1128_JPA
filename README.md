@@ -1,7 +1,9 @@
 # SpringMVC_1128_JPA
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
 #2020/02/14 
+=
 -0100:
+=
     完成修改，網頁正常執行，加入Readme.txt
 -1400:
     watchlist.jsp 修改symbol,name 增加alert()顯示產品名稱
