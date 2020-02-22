@@ -1,5 +1,5 @@
 # SpringMVC_1128_JPA  
-<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
+<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">  
 __2020/02/14__  
 _0100:_  
     完成修改，網頁正常執行，加入Readme.txt  
