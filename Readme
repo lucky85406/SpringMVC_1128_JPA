@@ -23,4 +23,7 @@
     versify.jsp 新增
     LoginFilter.java 修改 利用過濾器來導進versify.jsp
     LoginController.java 新增 versify類別 回傳驗證資訊
+#2020/02/22
+-1055:
+    investor.jsp 新增驗證功能 新增、修改時 balance值不為0或空值
 

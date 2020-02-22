@@ -66,7 +66,7 @@ public class InvestorController {
         Long id = investor.getId();
 
         // 發送認證信件
-        emailService.send(investor);
+//        emailService.send(investor);
         return investor;
     }
 

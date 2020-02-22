@@ -23,35 +23,51 @@
                 $("#add").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
-                    $.ajax({
-                        url: "/SpringMVC/mvc/portfolio/investor/",
-                        type: "POST",
-                        contentType: "application/json; charset=utf-8",
-                        data: jsonStr,
-                        async: true,
-                        cache: false,
-                        processData: false,
-                        success: function (resposeJsonObject) {
-                            //alert(JSON.stringify(resposeJsonObject));
-                            table_list();
+                    var balInt = $("#myform").find("#balance").val();
+                    if (confirm("是否增加?")) {
+                        if (parseInt(balInt) == 0 || balInt == null) {
+                            alert('Error:現金不為空值或為0，請重新輸入!!');
+                            return;
                         }
-                    });
+
+                        $.ajax({
+                            url: "/SpringMVC/mvc/portfolio/investor/",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            data: jsonStr,
+                            async: true,
+                            cache: false,
+                            processData: false,
+                            success: function (resposeJsonObject) {
+                                //alert(JSON.stringify(resposeJsonObject));
+                                table_list();
+                            }
+                        });
+                    }
+
                 });
                 $("#upt").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
-                    $.ajax({
-                        url: "/SpringMVC/mvc/portfolio/investor/" + jsonObj.id,
-                        type: "PUT",
-                        contentType: "application/json; charset=utf-8",
-                        data: jsonStr,
-                        async: true,
-                        cache: false,
-                        processData: false,
-                        success: function (resposeJsonObject) {
-                            table_list();
+                    var balInt = $("#myform").find("#balance").val();
+                    if (confirm("是否修改?")) {
+                        if (parseInt(balInt) == 0 || balInt == null) {
+                            alert('Error:現金不為空值或為0，請重新輸入!!');
+                            return;
                         }
-                    });
+                        $.ajax({
+                            url: "/SpringMVC/mvc/portfolio/investor/" + jsonObj.id,
+                            type: "PUT",
+                            contentType: "application/json; charset=utf-8",
+                            data: jsonStr,
+                            async: true,
+                            cache: false,
+                            processData: false,
+                            success: function (resposeJsonObject) {
+                                table_list();
+                            }
+                        });
+                    }
                 });
                 $("#del").on("click", function () {
                     var id = $("#myform").find("#id").val();
@@ -66,7 +82,6 @@
                         }
                     });
                 });
-
                 // 資料列表
                 table_list();
             });
