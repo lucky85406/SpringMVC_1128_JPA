@@ -1,4 +1,5 @@
-<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/fortfolio.png">
+# SpringMVC_1128_JPA
+<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
 #2020/02/14 
 -0100:
     完成修改，網頁正常執行，加入Readme.txt
@@ -27,4 +28,3 @@
 #2020/02/22
 -1055:
     investor.jsp 新增驗證功能 新增、修改時 balance值不為0或空值
-
