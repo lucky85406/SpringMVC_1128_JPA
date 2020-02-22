@@ -1,5 +1,3 @@
-# SpringMVC_1128_JPA  
-<img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">  
 ### 2020/02/14
 '''
 > 0100:  
