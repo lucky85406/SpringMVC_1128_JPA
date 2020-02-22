@@ -18,8 +18,8 @@
 * 2015:  
 	* com.mail.sendEmail 新增 Email驗證功能  
 	* Investor.java,InvestorController.java,LoginController.java 修改 新增 code,pass欄位  
-	* code 用來給使用者驗證碼  
-	* pass 用來判定新舊使用者  
+            code 用來給使用者驗證碼  
+            pass 用來判定新舊使用者  
 	* Investor.jsp 新增 code pass 欄位  
 * 2055:  
 	* EmailService.java 新增 Email伺服器 用來寄送Email驗證信  
