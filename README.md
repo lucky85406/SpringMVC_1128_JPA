@@ -1,10 +1,10 @@
-# SpringMVC_1128_JPA
+# SpringMVC_1128_JPA  
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
 __2020/02/14__  
 _0100:_  
     完成修改，網頁正常執行，加入Readme.txt  
--1400:  
-    watchlist.jsp 修改symbol,name 增加alert()顯示產品名稱  
+_1400:_
+    >watchlist.jsp 修改symbol,name 增加alert()顯示產品名稱  
     menu.jspf 修改side-menu.css 欄位風格設計  
     tstock.jsp 新增 auto_refresh 讓進入Tstock時自動更新價格  
     watch.jsp 新增標題出現觀察名稱  
