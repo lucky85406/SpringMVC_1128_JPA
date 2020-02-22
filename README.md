@@ -1,5 +1,5 @@
 ### 2020/02/14
-'''
+```
 > 0100:  
  > 完成修改，網頁正常執行，加入Readme.txt  
 > 1400:
@@ -9,9 +9,9 @@
  > watch.jsp 新增標題出現觀察名稱  
  > login bug 修改程式碼 investor.jsp , login.jsp , InvestorController.java , LoginController.java  
  >  *.jsp 新增 title資訊  
-'''
+```
 ## 2020/02/18
-'''
+```
 > 2015:  
  > com.mail.sendEmail 新增 Email驗證功能  
  > Investor.java,InvestorController.java,LoginController.java 修改 新增 code,pass欄位  
@@ -26,9 +26,9 @@
  > versify.jsp 新增  
  > LoginFilter.java 修改 利用過濾器來導進versify.jsp  
  > LoginController.java 新增 versify類別 回傳驗證資訊  
-'''
+```
 ## 2020/02/22
-'''
+```
 > 1055:  
  > investor.jsp 新增驗證功能 新增、修改時 balance值不為0或空值 
-''' 
+```
