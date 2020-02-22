@@ -35,4 +35,8 @@
 * 1055:  
 	* investor.jsp 新增驗證功能 新增、修改時 balance值不為0或空值 
 ```
-
+## 2020/02/23
+```
+* 0238:  
+	LoginFilter.java 修改過濾器 使得Regist.jsp可略過過濾器
+```
