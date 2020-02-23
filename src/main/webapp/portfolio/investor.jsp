@@ -20,32 +20,6 @@
                         $("#myform").find("#balance").val(data.balance);
                     });
                 });
-                $("#add").on("click", function () {
-                    var jsonObj = $('#myform').serializeObject();
-                    var jsonStr = JSON.stringify(jsonObj);
-                    var balInt = $("#myform").find("#balance").val();
-                    if (confirm("是否增加?")) {
-                        if (parseInt(balInt) == 0 || balInt == null) {
-                            alert('Error:現金不為空值或為0，請重新輸入!!');
-                            return;
-                        }
-
-                        $.ajax({
-                            url: "/SpringMVC/mvc/portfolio/investor/",
-                            type: "POST",
-                            contentType: "application/json; charset=utf-8",
-                            data: jsonStr,
-                            async: true,
-                            cache: false,
-                            processData: false,
-                            success: function (resposeJsonObject) {
-                                //alert(JSON.stringify(resposeJsonObject));
-                                table_list();
-                            }
-                        });
-                    }
-
-                });
                 $("#upt").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
@@ -130,8 +104,7 @@
                                     <input id="password" name="password" placeholder="password"/><p />
                                     <input id="email" name="email" placeholder="email"/><p />
                                     <input id="balance" name="balance" placeholder="balance" type="number"/><p />
-
-                                    <button id="add" type="button" class="pure-button pure-button-primary">新增</button>
+                                    
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
                                     <button id="del" type="button" class="pure-button pure-button-primary">刪除</button>
 

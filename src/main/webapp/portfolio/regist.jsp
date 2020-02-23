@@ -24,7 +24,7 @@
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
                     var balInt = $("#myform").find("#balance").val();
-                    if (confirm("是否增加?")) {
+                    if (confirm("請確認資料是否正確?")) {
                         if (parseInt(balInt) == 0 || balInt == null) {
                             alert('Error:現金不為空值或為0，請重新輸入!!');
                             return;
@@ -39,8 +39,9 @@
                             cache: false,
                             processData: false,
                             success: function (resposeJsonObject) {
-                                //alert(JSON.stringify(resposeJsonObject));
-                                console.log("OK");
+                                alert("驗證信件已送出");
+//                                console.log("OK");
+                                window.location.href="${pageContext.request.contextPath}/portfolio/login.jsp";
                             }
                         });
                     }
