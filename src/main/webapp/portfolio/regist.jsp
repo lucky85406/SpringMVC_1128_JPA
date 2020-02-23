@@ -4,6 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
         <title>註冊</title>
+        <!-- head -->
+        <%@include file="/WEB-INF/jsp/include/head.jspf"  %>
         <style>
             td {
                 padding-bottom: 50px;
@@ -17,7 +19,7 @@
         </style>
         <script>
             $(document).ready(function () {
-                
+
                 $("#add").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
@@ -38,16 +40,16 @@
                             processData: false,
                             success: function (resposeJsonObject) {
                                 //alert(JSON.stringify(resposeJsonObject));
-                                table_list();
+                                console.log("OK");
                             }
                         });
                     }
 
                 });
-                
+
             })
-            
-            
+
+
         </script>
     </head>
     <body style="padding:15px" bgcolor="#DDDDDD">
@@ -57,12 +59,13 @@
                 <form id="myform" class="pure-form">
                     <fieldset>
                         <legend><h1><img src="/SpringMVC/images/user.png" width="40" valign="middle"> Regist Form</h1></legend>
-
+                        
+                        <input id="id" vslue="0" name="id" placeholder="ID" readonly="true"/><p />
                         <input id="username" name="username" placeholder="username"/><p />
                         <input id="password" name="password" placeholder="password"/><p />
                         <input id="email" name="email" placeholder="email"/><p />
                         <input id="balance" name="balance" placeholder="balance" type="number"/><p />
-                        <button type="submit" class="pure-button pure-button-primary">Sign up</button>
+                        <button id="add" type="button" class="pure-button pure-button-primary">Sign up</button>
                     </fieldset>
                 </form>
             </td>
