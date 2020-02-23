@@ -31,6 +31,7 @@
 
                         <button id="log" type="submit" class="pure-button pure-button-primary" formmethod="post" formaction="/SpringMVC/mvc/portfolio/login">Sign in</button>
                         <input type="button" value="regist" class="pure-button pure-button-primary" onclick="location.href = '${pageContext.request.contextPath}/portfolio/regist.jsp'">
+                        <h5><a href='${pageContext.request.contextPath}/portfolio/forget.jsp'>忘記密碼?</a></h5>
                     </fieldset>
                 </form>
             </td>

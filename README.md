@@ -40,6 +40,8 @@
 * 0238:  
 	LoginFilter.java 修改過濾器 使得Regist.jsp可略過過濾器
 * 1138:
-        regist.jsp 建立 基本註冊功能、信箱註冊功能
+        regist.jsp 新增 基本註冊功能、信箱註冊功能
+        forget.jsp 建立
+        forget.jsp 新增 驗證碼控制，當驗證碼長度正確按鈕顯示
                        
 ```
