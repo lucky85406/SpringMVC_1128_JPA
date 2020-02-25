@@ -49,7 +49,10 @@
 ## 2020/02/25
 ```
 * 1908:  
-	forget.jsp 新增 信箱驗證功能 輸入信箱傳送驗證碼已修改密碼
+	forget.jsp 新增 信箱驗證功能 輸入信箱傳送驗證碼
+        forgetController.java 新增 get(),send()功能,取得使用者資料與寄送郵件
+* 2000:
+        forgetController.java 新增 update()功能,將取得的驗證碼輸入與資料比對，相符合才能正常更改密碼
 
                        
 ```
