@@ -1,7 +1,9 @@
+
 package com.web.portfolio.service;
 
 import com.mail.SendEmail;
 import com.web.portfolio.entity.Investor;
+import java.util.List;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +24,34 @@ public class EmailService {
             SendEmail sendEmail = new SendEmail();
             try {
                 sendEmail.submit(personal, to, title, html);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 System.out.println("Email send error: " + e);
                 e.printStackTrace();
             }
-            
+
+        };
+        new Thread(r).start();
+    }
+
+    public void forgetEmail(final Investor investor) {
+        Runnable r = () -> {
+            String personal = "Forget verify code";
+            String to = investor.getEmail();
+            String title = "忘記密碼，信箱驗證信";
+            String url = "http://localhost:8080/SpringMVC/portfolio/forget.jsp";
+            String html = "Dear 顧客您好," // 信件內容 
+                    +"<p />"+investor.getCode()
+                    + "<p /><a href='" + url + "'>Email驗證成功</a>"
+                    + "<p /> Please do not spam my email!";
+            SendEmail sendEmail = new SendEmail();
+            try {
+                sendEmail.submit(personal, to, title, html);
+            }
+            catch (Exception e) {
+                System.out.println("Email send error: " + e);
+                e.printStackTrace();
+            }
         };
         new Thread(r).start();
     }

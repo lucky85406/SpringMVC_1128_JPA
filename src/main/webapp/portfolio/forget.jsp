@@ -20,20 +20,45 @@
         </style>
         <script>
             $(document).ready(function () {
-
                 if (true) {
                     setInterval(function () {
                         check();
                     }, 1000);
                 }
+
+                $("#verbtn").on("click", function () {
+                    var jsonObj = $('#myform').serializeObject();
+                    var jsonStr = JSON.stringify(jsonObj);
+                    var email = $("#myform").find("#email").val();
+
+                    $.ajax({
+                        url: "/SpringMVC/mvc/portfolio/forget/send/" + email,
+                        type: "PUT",
+                        contentType: "application/json; charset=utf-8",
+                        data: jsonStr,
+                        async: true,
+                        cache: false,
+                        processData: false,
+                        success: function (resposeJsonObject) {
+                            alert("驗證信件已送出");
+                            console.log("OK");
+                        }
+                    });
+
+
+                });
+
             })
             function check() {
                 var vcode = $("#myform").find("#verify").val();
                 if (vcode.length == 6) {
                     $("#chkbtn").attr("disabled", false);
+                    $("#pass").attr("disabled",false);
                 }
                 if (vcode.length < 6) {
                     $("#chkbtn").attr("disabled", true);
+                    $("#pass").attr("disabled",true);
+                    
                 }
 
 
@@ -49,9 +74,9 @@
                     <fieldset>
                         <legend><h1><img src="/SpringMVC/images/user.png" width="40" valign="middle"> forget Form</h1></legend>
 
-                        <input type="text" name="username" placeholder="Username"><p />
-                        <input type="text" name="useremail" placeholder="UserEmail"><p />
+                        <input id="email" type="text" name="useremail" placeholder="UserEmail"><p />
                         <input id="verify" type="text" name="verify" placeholder="VerifyCode"><p/>
+                        <input id="pass" type="text" name="newpass" placeholder="New PassWord"><p />
 
                         <input id="verbtn" type="button" value="寄送驗證碼" class="pure-button pure-button-primary" onclick="alert('驗證碼已送出')">
                         <input id="chkbtn" type="button" value="確認" class="pure-button pure-button-primary" disabled="disabled">

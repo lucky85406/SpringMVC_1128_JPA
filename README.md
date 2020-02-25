@@ -43,5 +43,13 @@
         regist.jsp 新增 基本註冊功能、信箱註冊功能
         forget.jsp 建立
         forget.jsp 新增 驗證碼控制，當驗證碼長度正確按鈕顯示
+        ForgetController.java 建立
+                       
+```
+## 2020/02/25
+```
+* 1908:  
+	forget.jsp 新增 信箱驗證功能 輸入信箱傳送驗證碼已修改密碼
+
                        
 ```
