@@ -72,7 +72,7 @@
             })
             function check() {
                 var vcode = $("#myform").find("#verify").val();
-                if (vcode.length == 6) {
+                if (vcode.length >= 6) {
                     $("#chkbtn").attr("disabled", false);
                     $("#pass").attr("disabled", false);
                 }

@@ -68,10 +68,10 @@ public class ForgetController {
             investor.setPassword(map.get("pass"));
             investor.setUsername(investor.getUsername());
             investor.setBalance(investor.getBalance());
-            investor.setCode(investor.getCode());
+            investor.setCode(Integer.toHexString(investor.hashCode()));
             investor.setPass(investor.getPass());
 
-            System.out.println("update out");
+            System.out.println("update out"+investor.hashCode());
         }
         em.persist(investor);
         em.flush();
