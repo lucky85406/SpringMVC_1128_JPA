@@ -62,7 +62,8 @@
                         cache: false,
                         processData: false,
                         success: function (resposeJsonObject) {
-                            alert("OK");
+                            alert("修改成功");
+                            window.location.href = "${pageContext.request.contextPath}/portfolio/login.jsp";
                         }
                     });
 

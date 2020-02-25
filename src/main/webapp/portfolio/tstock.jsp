@@ -8,7 +8,12 @@
 
         <script>
             $(document).ready(function () {
-                auto_refresh();
+                
+                if (true) {
+                    setInterval(function () {
+                       auto_refresh();
+                    }, 10000);
+                }
                 $("#myTable").on("click", "tr", function () {
                     var id = $(this).find('td').eq(0).text().trim();
                     //console.log(id);
@@ -77,7 +82,7 @@
 
             function auto_refresh() {
                 $.get("/SpringMVC/mvc/portfolio/price/refresh/", function (datas, status) {
-                    console.log("Datas: " + datas);
+                    table_list();
                 });
 
             }

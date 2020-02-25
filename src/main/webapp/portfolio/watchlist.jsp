@@ -11,12 +11,17 @@
 
             $(document).ready(function () {
                 watchList();
+                if (true) {
+                    setInterval(function () {
+                        watchList();
+                    }, 30000);//每半分鐘更新
+                }
                 // 走勢圖
                 var symbol = "";
                 var name = "";
                 $("#myTable").on("click", "tr", function () {
                     symbol = $(this).find("td").eq(2).text().trim();
-                    name = "產品名稱: "+$(this).find("td").eq(1).text().trim();                    
+                    name = "產品名稱: " + $(this).find("td").eq(1).text().trim();
                     alert(name);
                     queryHistQuotes(symbol);
                 });
@@ -50,7 +55,7 @@
             function watchList() {
                 $.get("/SpringMVC/mvc/portfolio/watch/" + watch_id, function (data, status) {
                     $("#Watchname").text(data.name);
-                    console.log(JSON.stringify(data));
+//                    console.log(JSON.stringify("data"));
                     // 請撰寫
                     $("#myTable tbody > tr").remove();
                     $.each(data.tStocks, function (i, item) {
