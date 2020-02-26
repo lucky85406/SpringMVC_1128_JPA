@@ -38,7 +38,15 @@
                 $("#upt").on("click", function () {
                     var jsonObj = $('#myform').serializeObject();
                     var jsonStr = JSON.stringify(jsonObj);
-                    console.log(jsonStr);
+//                    console.log(jsonStr);
+                    if(confirm("請問是否修改?")){
+                        if($("#myform").find("#name").val() == ""){
+                            alert('請確認是否有輸入名稱');
+                            return;
+                            
+                        }
+                        
+                    }
                     $.ajax({
                         url: "/SpringMVC/mvc/portfolio/classify/" + jsonObj.id,
                         type: "PUT",
