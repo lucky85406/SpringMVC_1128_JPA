@@ -1,4 +1,5 @@
-    package com.web.portfolio.controller;
+
+package com.web.portfolio.controller;
 
 import com.web.portfolio.entity.Investor;
 import com.web.portfolio.entity.Watch;
@@ -8,6 +9,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,14 +27,26 @@ public class InvestorController {
 
     @PersistenceContext
     protected EntityManager em;
-    
+
     @Autowired
     EmailService emailService;
 
     @GetMapping(value = {"/", "/query"})
-    public List<Investor> query() {
-        Query query = em.createQuery("select i from Investor i");
+    public List<Investor> query(HttpSession session) {
+        Investor investor = (Investor) session.getAttribute("investor");
+        String sql = "select i from Investor i";
+        Query query;
+        if (investor.getUsername().equals("admin") == false) {
+            sql = "select i from Investor i where i.username =: username";
+            query = em.createQuery(sql);
+            query.setParameter("username", investor.getUsername());
+            List<Investor> list = query.getResultList();
+            System.out.println("list:" + list);
+            return list;
+        }
+        query = em.createQuery(sql);
         List<Investor> list = query.getResultList();
+        System.out.println("list:" + list);
         return list;
     }
 
@@ -94,5 +108,4 @@ public class InvestorController {
         return get(id) == null ? true : false;
     }
 
-    
 }

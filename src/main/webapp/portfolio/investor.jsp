@@ -65,15 +65,15 @@
                     $("#myTable tbody > tr").remove();
                     $.each(datas, function (i, item) {
                         var html = '<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td></tr>';
-                        $('#myTable').append(String.format(html,
-                                item.id,
-                                item.username,
-                                item.password,
-                                item.email,
-                                item.balance,
-                                item.code,
-                                item.pass
-                                ));
+                            $('#myTable').append(String.format(html,
+                                    item.id,
+                                    item.username,
+                                    item.password,
+                                    item.email,
+                                    item.balance,
+                                    item.code,
+                                    item.pass
+                                    ));
                     });
                 });
             }
@@ -104,7 +104,7 @@
                                     <input id="password" name="password" placeholder="password"/><p />
                                     <input id="email" name="email" placeholder="email"/><p />
                                     <input id="balance" name="balance" placeholder="balance" type="number"/><p />
-                                    
+
                                     <button id="upt" type="button" class="pure-button pure-button-primary">修改</button>
                                     <button id="del" type="button" class="pure-button pure-button-primary">刪除</button>
 
