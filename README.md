@@ -3,10 +3,13 @@
 
 ## 登入
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/Login.png">
+
 ## Stock清單
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/list.png">
+
 ## 觀察趨勢
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/wlist.png">
+
 ## 觀察資產
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/ass.png">
 
