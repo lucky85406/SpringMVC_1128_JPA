@@ -1,12 +1,12 @@
 # SpringMVC_1128_JPA  
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/portfolio.png">
-* 登入
+## 登入
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/Login.png">
-* Stock清單
+## Stock清單
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/list.png">
-* 觀察趨勢
+## 觀察趨勢
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/wlist.png">
-* 觀察資產
+## 觀察資產
 <img src="https://github.com/lucky85406/SpringMVC_1128_JPA/blob/master/src/main/webapp/portfolio/images/ass.png">
 
 ### 2020/02/14
